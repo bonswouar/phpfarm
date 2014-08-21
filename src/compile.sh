@@ -123,6 +123,9 @@ if [ $? -gt 0 ]; then
     exit 3
 fi
 
+#hack for https://bugs.php.net/bug.php?id=48795
+sed -i '/EXTRA_LIBS = /s|$| -lstdc++|' Makefile
+
 #compile sources
 #make clean
 make
